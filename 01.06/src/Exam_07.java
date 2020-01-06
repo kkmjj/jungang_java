@@ -9,14 +9,18 @@ abstract class Protoss {
 	
 	 public abstract void attack(); 
 	 // 추상메소드   -> 추상메소드 가 한개이상 있으면  그 클래스는 추상 클래스  -> 클래스에도 선언해야함 
-										// 상속시 이 함수를 사용 하라는 뜻 
+	// 상속시 이 함수를 사용 하라는 뜻  자기 자신을 객체로 사용 못함  -> 자식 객체에서 사용 가능 
+	 
+	 		
 	
-	
-	
-	public void move() {
-		System.out.print("프로토스가 움직인다");
-	}
-	
+//	
+//	public void move() {
+//		System.out.print("프로토스가 움직인다");
+//	}
+//	
+	 public abstract void move(); 
+	 
+	 
 }
 
 class Zeatlot extends Protoss {
