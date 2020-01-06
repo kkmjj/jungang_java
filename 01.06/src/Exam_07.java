@@ -2,6 +2,12 @@
 import java.util.*;
 abstract class Protoss {
 	
+	// 인터페이스는 다중상속을 위해 만들어짐  상수 만 허용 -> public static final 
+	// 인터페이스 메소드 -> 추상메소드 만 사용 가능  생성자 사용 불가 
+	
+	
+	
+	
 //	
 //	public void attack() {
 //		System.out.print("프로토스가 공격한다");
