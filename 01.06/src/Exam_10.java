@@ -37,6 +37,13 @@ public class Exam_10 {
 		set.add("홍길도");
 		set.add("강호동");
 		
+		
+		Object[] data = new Object[set.size()];
+		
+		set.toArray(data); // set에 있는 모든 값을 data에 넣어라 
+		
+		
+		
 		Iterator it = set.iterator();		// 데이터를 꺼낼때 사용 하는 방식 
 		while(it.hasNext())
 		{
