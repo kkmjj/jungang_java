@@ -33,6 +33,9 @@ public class Exam_08 {
 		{
 			System.out.print("국어 점수는 정수 값만 입력하세요 ");
 		}
+		finally { // try절이 끝나면 바로 호출  catch 는 try절에서 예외 발생시 try 종료 시키고 catch로 
+			System.out.println("국어점수를 입력받아 출력하는 프로그램");
+		}
 		
 
 	}
