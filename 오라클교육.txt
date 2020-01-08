@@ -1,0 +1,25 @@
+
+-- 사용자 계정 보기 (=Database) 리스트 보기 
+
+select * from dba_users;
+
+
+-- 사용자 계정 lcok 해지 
+--alter user [유저네임] account unlock; 
+
+
+select name from v$database;
+
+--사용자 계정 만들기 
+create user javadb IDENTIFIED by javadb;
+
+
+
+create table goodsinfo(
+    code char(5) not null primary key, --기본키를 code로 설정 null 이면 안되고 char형태로 
+    name VARCHAR2(30) not null,           --30개의 문자를 쓸수 있는 컬럼  null 이면 안됨 
+    price NUMBER(8) not null                -- price 데이터 number 형식으로 8자 null 이면 안됨 
+); 
+
+
+
