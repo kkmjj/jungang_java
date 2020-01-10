@@ -31,6 +31,12 @@ public class Bank {
 	}
 	
 	
+	// ctrl + space 눌러서 toString 선택 
+@Override
+	public String toString() {
+		
+		return name;
+	}	
 	
 	
 	
