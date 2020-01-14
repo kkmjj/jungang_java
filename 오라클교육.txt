@@ -22,4 +22,166 @@ create table goodsinfo(
 ); 
 
 
+--ch03 sql 기본 
+
+select * from TAB; --TABLE 보기
+
+desc dept;--describe
+
+
+select empno, ename, SAL*12 as yearsal from emp;
+
+--null값을 없애는 법  ->comm 값이 null 이 아닌 0으로 표시하기 nvl(해당속성,0)
+
+select empno, ename, nvl(comm,0) , SAL*12 as 연봉 from emp;
+
+-- 3가지 값이 하나로 표현  || 
+select ename || ' is a' || job from emp;
+
+-- 이건 합쳐지지 않고 구분되서 결과값 나옴 
+select ename ,' is a' , job from emp;
+
+
+--중복 제거  distinct
+select DISTINCT deptno from emp;
+
+select DISTINCT job from emp;
+
+--문자열 데이터 조회 -데이터의 값은 대소문자 로 비교 
+select empno, ename, sal from emp where ename='FORD';
+
+
+--  1982/01/01 이후에 있는 사원이 이름 출력하기 
+
+select ename, hiredate from emp where hiredate >= '1982/01/01';
+
+--논리 연산자 and
+select * from emp where deptno=10 and job='MANAGER';
+
+select * from emp where not deptno=10;
+
+select * from emp where deptno <> 10;
+
+select * from emp where deptno !=10;
+
+
+-- 문제 2000~3000 사이의 급여를 받는 사원 명단 
+
+select ename,sal from emp where sal >2000 and sal <3000;
+
+
+-- in == or와 같다  즉 in 안에 있는 값들을 출력 
+select * from emp where comm not in (300,500,1400);
+
+
+--LIKE (%)  LIKE(_)   -> ename like'f%'  _는 한문자열을 의미
+select * from emp where ename='F';
+select * from emp where ename LIKE'F%' ;
+
+select * from emp where  ename like'%A%'; -- A가 포함된 데이터 뽑기 LIKE%찾는값%
+
+select * from emp where  ename not like'%A%';
+
+
+select * from emp where  ename like'_A%'; -- 문자 하나 있고 두번쨰가  A인경우 
+select * from emp where  ename like'%__A%'; -- 세번째 자리에 A가 있는경우 
+
+select * from emp where comm is not null;
+
+select * from emp  order by comm desc, empno desc; -- desc 오름 차순 
+
+
+--상관이 없는 manager가 없는 사원  -> NULL 값 찾을 때는 = 이 아니라 IS 로 해야한다 
+select * from emp WHERE mgr IS NULL ;
+
+
+
+select * from customer;
+select * from orders;
+-- 고객과 고객의 주문에 대한 데이터 모두 출력
+select * from customer, orders where customer.custid = orders.orderid; -- 기본 조인 
+
+
+--슈퍼키 기본키가 포함된집합 ->ex)(기본키 , a라는 속성) (기본키 a , b) ......
+--데이터 베이스에서의 도메인은 범위를 의미한다.
+--
+create table orders (
+orderid NUMBER(2) primary key,
+custid NUMBER(2) REFERENCES Customer(custid),  -- REFEERECE 참조하여 CUSTOMER 테이블에 있는 ID 값을 사용 (즉,CUSTOMER이 있어야함)
+bookid NUMBER(2) REFERENCES Book(bookid),
+saleprice NUMBER(8),
+orderdate DATE
+
+);   
+
+--2 . 집계 함수 
+
+
+select deptno, round(sal,3) from emp; -- 단일행 함수 - 결과가 여러개
+
+select sum(sal) from emp;
+
+select ename,max(sal) from emp group by ename; -- group by로 묶어서 사용하면 단일행 함수 사용 가능 
+
+select sum(sal), round(sal,-3) from emp group by sal; -- round -3이면 소수점 -3 즉 1000의 자리 만큼만  
+
+select round(avg(sal),3), max(sal),min(sal) from emp;  
+
+--* 을 했을경우에는 null 값 도 포함하여 개수를 파악 결과값 14, 4
+select count(*), count(comm) from emp;
+
+select count(job) from emp;
+
+select  count(DISTINCT job) from emp; -- distinct 중복 제거  count 안에 해줘야 적용 
+
+--가장 최근에 입사한 사원의 입사일과 가장 오래된 사원의 입사일 
+select min(hiredate) as 오래된 , max(hiredate) as 가장최근 from emp;
+
+
+-- 10번 부서 deptno 소속의 사원중에서 comm 을 받는 사원수는? 
+select count(comm) from emp where deptno=30;
+
+
+
+--3 . Group by  집계 함수와 컬럼 이름 단일행 함수 같이 사용 
+
+
+select round(avg(sal),3), deptno as 부서 from emp group by deptno;
+
+
+--소속 부서별 deptno  급여 총액과 평균 
+
+select avg(sal),sum(sal), deptno from emp group by deptno;
+
+
+--부서별 사원수와 커미션을 받는 사원수 
+
+select count(*), count(comm) from emp group by deptno ;
+
+select deptno as 부서, count(*), count(comm) from emp group by deptno ;
+
+
+--having 절 
+
+select avg(sal),sum(sal), deptno from emp group by deptno having avg(sal) >=2000;
+
+
+
+--- 부서의 최소값과 최대값 구하기  급여 최대급여가 2900 이상인 부서만 출력 
+
+select  min(sal), max(sal) from emp group by deptno having max(sal) >=2900;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
