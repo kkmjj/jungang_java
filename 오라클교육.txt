@@ -1,61 +1,61 @@
-
--- »ç¿ëÀÚ °èÁ¤ º¸±â (=Database) ¸®½ºÆ® º¸±â 
+ï»¿
+-- ì‚¬ìš©ì ê³„ì • ë³´ê¸° (=Database) ë¦¬ìŠ¤íŠ¸ ë³´ê¸° 
 
 select * from dba_users;
 
 
--- »ç¿ëÀÚ °èÁ¤ lcok ÇØÁö 
---alter user [À¯Àú³×ÀÓ] account unlock; 
+-- ì‚¬ìš©ì ê³„ì • lcok í•´ì§€ 
+--alter user [ìœ ì €ë„¤ì„] account unlock; 
 
 
 select name from v$database;
 
---»ç¿ëÀÚ °èÁ¤ ¸¸µé±â 
+--ì‚¬ìš©ì ê³„ì • ë§Œë“¤ê¸° 
 create user javadb IDENTIFIED by javadb;
 
 
 
 create table goodsinfo(
-    code char(5) not null primary key, --±âº»Å°¸¦ code·Î ¼³Á¤ null ÀÌ¸é ¾ÈµÇ°í charÇüÅÂ·Î 
-    name VARCHAR2(30) not null,           --30°³ÀÇ ¹®ÀÚ¸¦ ¾µ¼ö ÀÖ´Â ÄÃ·³  null ÀÌ¸é ¾ÈµÊ 
-    price NUMBER(8) not null                -- price µ¥ÀÌÅÍ number Çü½ÄÀ¸·Î 8ÀÚ null ÀÌ¸é ¾ÈµÊ 
+    code char(5) not null primary key, --ê¸°ë³¸í‚¤ë¥¼ codeë¡œ ì„¤ì • null ì´ë©´ ì•ˆë˜ê³  charí˜•íƒœë¡œ 
+    name VARCHAR2(30) not null,           --30ê°œì˜ ë¬¸ìë¥¼ ì“¸ìˆ˜ ìˆëŠ” ì»¬ëŸ¼  null ì´ë©´ ì•ˆë¨ 
+    price NUMBER(8) not null                -- price ë°ì´í„° number í˜•ì‹ìœ¼ë¡œ 8ì null ì´ë©´ ì•ˆë¨ 
 ); 
 
 
---ch03 sql ±âº» 
+--ch03 sql ê¸°ë³¸ 
 
-select * from TAB; --TABLE º¸±â
+select * from TAB; --TABLE ë³´ê¸°
 
 desc dept;--describe
 
 
 select empno, ename, SAL*12 as yearsal from emp;
 
---null°ªÀ» ¾ø¾Ö´Â ¹ı  ->comm °ªÀÌ null ÀÌ ¾Æ´Ñ 0À¸·Î Ç¥½ÃÇÏ±â nvl(ÇØ´ç¼Ó¼º,0)
+--nullê°’ì„ ì—†ì• ëŠ” ë²•  ->comm ê°’ì´ null ì´ ì•„ë‹Œ 0ìœ¼ë¡œ í‘œì‹œí•˜ê¸° nvl(í•´ë‹¹ì†ì„±,0)
 
-select empno, ename, nvl(comm,0) , SAL*12 as ¿¬ºÀ from emp;
+select empno, ename, nvl(comm,0) , SAL*12 as ì—°ë´‰ from emp;
 
--- 3°¡Áö °ªÀÌ ÇÏ³ª·Î Ç¥Çö  || 
+-- 3ê°€ì§€ ê°’ì´ í•˜ë‚˜ë¡œ í‘œí˜„  || 
 select ename || ' is a' || job from emp;
 
--- ÀÌ°Ç ÇÕÃÄÁöÁö ¾Ê°í ±¸ºĞµÇ¼­ °á°ú°ª ³ª¿È 
+-- ì´ê±´ í•©ì³ì§€ì§€ ì•Šê³  êµ¬ë¶„ë˜ì„œ ê²°ê³¼ê°’ ë‚˜ì˜´ 
 select ename ,' is a' , job from emp;
 
 
---Áßº¹ Á¦°Å  distinct
+--ì¤‘ë³µ ì œê±°  distinct
 select DISTINCT deptno from emp;
 
 select DISTINCT job from emp;
 
---¹®ÀÚ¿­ µ¥ÀÌÅÍ Á¶È¸ -µ¥ÀÌÅÍÀÇ °ªÀº ´ë¼Ò¹®ÀÚ ·Î ºñ±³ 
+--ë¬¸ìì—´ ë°ì´í„° ì¡°íšŒ -ë°ì´í„°ì˜ ê°’ì€ ëŒ€ì†Œë¬¸ì ë¡œ ë¹„êµ 
 select empno, ename, sal from emp where ename='FORD';
 
 
---  1982/01/01 ÀÌÈÄ¿¡ ÀÖ´Â »ç¿øÀÌ ÀÌ¸§ Ãâ·ÂÇÏ±â 
+--  1982/01/01 ì´í›„ì— ìˆëŠ” ì‚¬ì›ì´ ì´ë¦„ ì¶œë ¥í•˜ê¸° 
 
 select ename, hiredate from emp where hiredate >= '1982/01/01';
 
---³í¸® ¿¬»êÀÚ and
+--ë…¼ë¦¬ ì—°ì‚°ì and
 select * from emp where deptno=10 and job='MANAGER';
 
 select * from emp where not deptno=10;
@@ -65,116 +65,139 @@ select * from emp where deptno <> 10;
 select * from emp where deptno !=10;
 
 
--- ¹®Á¦ 2000~3000 »çÀÌÀÇ ±Ş¿©¸¦ ¹Ş´Â »ç¿ø ¸í´Ü 
+-- ë¬¸ì œ 2000~3000 ì‚¬ì´ì˜ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì› ëª…ë‹¨ 
 
 select ename,sal from emp where sal >2000 and sal <3000;
 
 
--- in == or¿Í °°´Ù  Áï in ¾È¿¡ ÀÖ´Â °ªµéÀ» Ãâ·Â 
+-- in == orì™€ ê°™ë‹¤  ì¦‰ in ì•ˆì— ìˆëŠ” ê°’ë“¤ì„ ì¶œë ¥ 
 select * from emp where comm not in (300,500,1400);
 
 
---LIKE (%)  LIKE(_)   -> ename like'f%'  _´Â ÇÑ¹®ÀÚ¿­À» ÀÇ¹Ì
+--LIKE (%)  LIKE(_)   -> ename like'f%'  _ëŠ” í•œë¬¸ìì—´ì„ ì˜ë¯¸
 select * from emp where ename='F';
 select * from emp where ename LIKE'F%' ;
 
-select * from emp where  ename like'%A%'; -- A°¡ Æ÷ÇÔµÈ µ¥ÀÌÅÍ »Ì±â LIKE%Ã£´Â°ª%
+select * from emp where  ename like'%A%'; -- Aê°€ í¬í•¨ëœ ë°ì´í„° ë½‘ê¸° LIKE%ì°¾ëŠ”ê°’%
 
 select * from emp where  ename not like'%A%';
 
 
-select * from emp where  ename like'_A%'; -- ¹®ÀÚ ÇÏ³ª ÀÖ°í µÎ¹ø¤Š°¡  AÀÎ°æ¿ì 
-select * from emp where  ename like'%__A%'; -- ¼¼¹øÂ° ÀÚ¸®¿¡ A°¡ ÀÖ´Â°æ¿ì 
+select * from emp where  ename like'_A%'; -- ë¬¸ì í•˜ë‚˜ ìˆê³  ë‘ë²ˆì¨°ê°€  Aì¸ê²½ìš° 
+select * from emp where  ename like'%__A%'; -- ì„¸ë²ˆì§¸ ìë¦¬ì— Aê°€ ìˆëŠ”ê²½ìš° 
 
 select * from emp where comm is not null;
 
-select * from emp  order by comm desc, empno desc; -- desc ¿À¸§ Â÷¼ø 
+select * from emp  order by comm desc, empno desc; -- desc ì˜¤ë¦„ ì°¨ìˆœ 
 
 
---»ó°üÀÌ ¾ø´Â manager°¡ ¾ø´Â »ç¿ø  -> NULL °ª Ã£À» ¶§´Â = ÀÌ ¾Æ´Ï¶ó IS ·Î ÇØ¾ßÇÑ´Ù 
+--ìƒê´€ì´ ì—†ëŠ” managerê°€ ì—†ëŠ” ì‚¬ì›  -> NULL ê°’ ì°¾ì„ ë•ŒëŠ” = ì´ ì•„ë‹ˆë¼ IS ë¡œ í•´ì•¼í•œë‹¤ 
 select * from emp WHERE mgr IS NULL ;
 
 
 
 select * from customer;
 select * from orders;
--- °í°´°ú °í°´ÀÇ ÁÖ¹®¿¡ ´ëÇÑ µ¥ÀÌÅÍ ¸ğµÎ Ãâ·Â
-select * from customer, orders where customer.custid = orders.orderid; -- ±âº» Á¶ÀÎ 
+-- ê³ ê°ê³¼ ê³ ê°ì˜ ì£¼ë¬¸ì— ëŒ€í•œ ë°ì´í„° ëª¨ë‘ ì¶œë ¥
+select * from customer, orders where customer.custid = orders.orderid; -- ê¸°ë³¸ ì¡°ì¸ 
 
 
---½´ÆÛÅ° ±âº»Å°°¡ Æ÷ÇÔµÈÁıÇÕ ->ex)(±âº»Å° , a¶ó´Â ¼Ó¼º) (±âº»Å° a , b) ......
---µ¥ÀÌÅÍ º£ÀÌ½º¿¡¼­ÀÇ µµ¸ŞÀÎÀº ¹üÀ§¸¦ ÀÇ¹ÌÇÑ´Ù.
+--ìŠˆí¼í‚¤ ê¸°ë³¸í‚¤ê°€ í¬í•¨ëœì§‘í•© ->ex)(ê¸°ë³¸í‚¤ , aë¼ëŠ” ì†ì„±) (ê¸°ë³¸í‚¤ a , b) ......
+--ë°ì´í„° ë² ì´ìŠ¤ì—ì„œì˜ ë„ë©”ì¸ì€ ë²”ìœ„ë¥¼ ì˜ë¯¸í•œë‹¤.
 --
 create table orders (
 orderid NUMBER(2) primary key,
-custid NUMBER(2) REFERENCES Customer(custid),  -- REFEERECE ÂüÁ¶ÇÏ¿© CUSTOMER Å×ÀÌºí¿¡ ÀÖ´Â ID °ªÀ» »ç¿ë (Áï,CUSTOMERÀÌ ÀÖ¾î¾ßÇÔ)
+custid NUMBER(2) REFERENCES Customer(custid),  -- REFEERECE ì°¸ì¡°í•˜ì—¬ CUSTOMER í…Œì´ë¸”ì— ìˆëŠ” ID ê°’ì„ ì‚¬ìš© (ì¦‰,CUSTOMERì´ ìˆì–´ì•¼í•¨)
 bookid NUMBER(2) REFERENCES Book(bookid),
 saleprice NUMBER(8),
 orderdate DATE
 
 );   
 
---2 . Áı°è ÇÔ¼ö 
+--2 . ì§‘ê³„ í•¨ìˆ˜ 
 
 
-select deptno, round(sal,3) from emp; -- ´ÜÀÏÇà ÇÔ¼ö - °á°ú°¡ ¿©·¯°³
+select deptno, round(sal,3) from emp; -- ë‹¨ì¼í–‰ í•¨ìˆ˜ - ê²°ê³¼ê°€ ì—¬ëŸ¬ê°œ
 
 select sum(sal) from emp;
 
-select ename,max(sal) from emp group by ename; -- group by·Î ¹­¾î¼­ »ç¿ëÇÏ¸é ´ÜÀÏÇà ÇÔ¼ö »ç¿ë °¡´É 
+select ename,max(sal) from emp group by ename; -- group byë¡œ ë¬¶ì–´ì„œ ì‚¬ìš©í•˜ë©´ ë‹¨ì¼í–‰ í•¨ìˆ˜ ì‚¬ìš© ê°€ëŠ¥ 
 
-select sum(sal), round(sal,-3) from emp group by sal; -- round -3ÀÌ¸é ¼Ò¼öÁ¡ -3 Áï 1000ÀÇ ÀÚ¸® ¸¸Å­¸¸  
+select sum(sal), round(sal,-3) from emp group by sal; -- round -3ì´ë©´ ì†Œìˆ˜ì  -3 ì¦‰ 1000ì˜ ìë¦¬ ë§Œí¼ë§Œ  
 
 select round(avg(sal),3), max(sal),min(sal) from emp;  
 
---* À» ÇßÀ»°æ¿ì¿¡´Â null °ª µµ Æ÷ÇÔÇÏ¿© °³¼ö¸¦ ÆÄ¾Ç °á°ú°ª 14, 4
+--* ì„ í–ˆì„ê²½ìš°ì—ëŠ” null ê°’ ë„ í¬í•¨í•˜ì—¬ ê°œìˆ˜ë¥¼ íŒŒì•… ê²°ê³¼ê°’ 14, 4
 select count(*), count(comm) from emp;
 
 select count(job) from emp;
 
-select  count(DISTINCT job) from emp; -- distinct Áßº¹ Á¦°Å  count ¾È¿¡ ÇØÁà¾ß Àû¿ë 
+select  count(DISTINCT job) from emp; -- distinct ì¤‘ë³µ ì œê±°  count ì•ˆì— í•´ì¤˜ì•¼ ì ìš© 
 
---°¡Àå ÃÖ±Ù¿¡ ÀÔ»çÇÑ »ç¿øÀÇ ÀÔ»çÀÏ°ú °¡Àå ¿À·¡µÈ »ç¿øÀÇ ÀÔ»çÀÏ 
-select min(hiredate) as ¿À·¡µÈ , max(hiredate) as °¡ÀåÃÖ±Ù from emp;
+--ê°€ì¥ ìµœê·¼ì— ì…ì‚¬í•œ ì‚¬ì›ì˜ ì…ì‚¬ì¼ê³¼ ê°€ì¥ ì˜¤ë˜ëœ ì‚¬ì›ì˜ ì…ì‚¬ì¼ 
+select min(hiredate) as ì˜¤ë˜ëœ , max(hiredate) as ê°€ì¥ìµœê·¼ from emp;
 
 
--- 10¹ø ºÎ¼­ deptno ¼Ò¼ÓÀÇ »ç¿øÁß¿¡¼­ comm À» ¹Ş´Â »ç¿ø¼ö´Â? 
+-- 10ë²ˆ ë¶€ì„œ deptno ì†Œì†ì˜ ì‚¬ì›ì¤‘ì—ì„œ comm ì„ ë°›ëŠ” ì‚¬ì›ìˆ˜ëŠ”? 
 select count(comm) from emp where deptno=30;
 
 
 
---3 . Group by  Áı°è ÇÔ¼ö¿Í ÄÃ·³ ÀÌ¸§ ´ÜÀÏÇà ÇÔ¼ö °°ÀÌ »ç¿ë 
+--3 . Group by  ì§‘ê³„ í•¨ìˆ˜ì™€ ì»¬ëŸ¼ ì´ë¦„ ë‹¨ì¼í–‰ í•¨ìˆ˜ ê°™ì´ ì‚¬ìš© 
 
 
-select round(avg(sal),3), deptno as ºÎ¼­ from emp group by deptno;
+select round(avg(sal),3), deptno as ë¶€ì„œ from emp group by deptno;
 
 
---¼Ò¼Ó ºÎ¼­º° deptno  ±Ş¿© ÃÑ¾×°ú Æò±Õ 
+--ì†Œì† ë¶€ì„œë³„ deptno  ê¸‰ì—¬ ì´ì•¡ê³¼ í‰ê·  
 
 select avg(sal),sum(sal), deptno from emp group by deptno;
 
 
---ºÎ¼­º° »ç¿ø¼ö¿Í Ä¿¹Ì¼ÇÀ» ¹Ş´Â »ç¿ø¼ö 
+--ë¶€ì„œë³„ ì‚¬ì›ìˆ˜ì™€ ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ì›ìˆ˜ 
 
 select count(*), count(comm) from emp group by deptno ;
 
-select deptno as ºÎ¼­, count(*), count(comm) from emp group by deptno ;
+select deptno as ë¶€ì„œ, count(*), count(comm) from emp group by deptno ;
 
 
---having Àı 
+--having ì ˆ 
 
 select avg(sal),sum(sal), deptno from emp group by deptno having avg(sal) >=2000;
 
 
 
---- ºÎ¼­ÀÇ ÃÖ¼Ò°ª°ú ÃÖ´ë°ª ±¸ÇÏ±â  ±Ş¿© ÃÖ´ë±Ş¿©°¡ 2900 ÀÌ»óÀÎ ºÎ¼­¸¸ Ãâ·Â 
+--- ë¶€ì„œì˜ ìµœì†Œê°’ê³¼ ìµœëŒ€ê°’ êµ¬í•˜ê¸°  ê¸‰ì—¬ ìµœëŒ€ê¸‰ì—¬ê°€ 2900 ì´ìƒì¸ ë¶€ì„œë§Œ ì¶œë ¥ 
 
 select  min(sal), max(sal) from emp group by deptno having max(sal) >=2900;
 
 
 
 
+-- self join
+-- ì´ë¦„ì´ smithì¸ ì‚¬ì›ì˜ manager ì´ë¦„ ( ì¦‰ smith ì—ì„œ manger mgr ê°’ì„ ì°¾ê³  ì´ë¦„ ì°¾ê¸° )
 
+select e.ename ||'ì˜ ë§¤ë‹ˆì €ëŠ”'|| m.ename from emp e, emp m  where e.mgr=m.empno and  e.ename='SMITH';
+
+
+--ë§¤ë‹ˆì €ê°€ KINGì¸ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ì§ê¸‰ ì¶œë ¥ 
+select e.ename , e.job from emp e, emp m  where e.mgr=m.empno and  m.ename='KING';
+
+
+--outer join - ë§ˆë‹¹ ë°ì´í„° 
+-- ì£¼ë¬¸í•˜ì§€ ì•ŠëŠ” ê³ ê° ì´ë¦„ 
+select customer.name from customer left outer join orders on orders.custid=customer.custid where orders.custid is null;
+
+
+
+select  customer.name, orders.saleprice
+from  customer, orders
+where customer.custid=orders.custid(+);  -- (+) ì´ê±´ ì£¼ë¬¸í•˜ì§€ ì•ŠëŠ” ì´ë¼ëŠ” ì½”ë“œ right outer join ê³¼ ë™ì¼í•œ ê°’ ìœ¼ë¡œ  ë‚˜ì˜´ 
+--where customer.custid(+)=orders.custid;  -- ì™¼ìª½ì´ë©´ left outer join ê³¼ ë™ì¼ 
+
+select  customer.name, orders.saleprice
+from  customer, orders
+where customer.custid=orders.custid;  
 
 
 
