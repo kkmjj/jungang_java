@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+
+
+<script type="text/javascript">
+	
+	function Student(name,korean,math,english,science) {
+		this.name=name;
+		this.korean=korean;
+		this.math=math;
+		this.english=english;
+		this.science=science;
+		
+		
+		this.getSum = function(){
+			return this.korean+this.math+this.english+this.science;
+		}
+		
+		this.avg = function(){
+			return this.getSum() /4;
+		}
+		
+		this.toString = function(){
+		  return this.name+"ㅁ"+this.getSum()+"ㅁ"+this.avg();
+		}
+		
+	}
+	
+	var s=[];
+	s.push(new Student('홍길동1',87,87,90,44));
+	s.push(new Student('홍길동2',87,87,90,44));
+	s.push(new Student('홍길동3',87,87,90,44));
+	s.push(new Student('홍길동4',87,87,90,44));
+	s.push(new Student('홍길동5',87,87,90,44));
+	s.push(new Student('홍길동6',87,87,90,44));
+	
+	var output = '이름\총점\평균\n';
+	for(var i in s)
+	{
+		output +=s[i].toString()+'\n';
+	
+	}
+
+	
+	
+	alert(output);
+	
+</script>
+</html>
