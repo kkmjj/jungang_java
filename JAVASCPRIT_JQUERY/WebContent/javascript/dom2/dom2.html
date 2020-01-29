@@ -18,8 +18,30 @@
 
 <p id="demos"></p>
 
+<div> 
+	<h1>선호하는 음식</h1>
+	<div id ="food1">
+		<h2 id="title"> 한식</h2>
+		<ol>
+			<li><a href="#"/>김치</li>
+			<li>불고기</li>
+			<li>비빔밥</li>
+			
+		</ol>
+	</div>
+	
+	<div id ="food2">
+		<h2 > 양식</h2>
+		<ol id="list">
+			<li>돈가스</li>
+			<li class="pizza">피자</li>
+			<li>파스타</li>
+			
+		</ol>
+	</div>
 
-
+</div>
+</body>
 
 <script>
 var myElement = document.getElementsByTagName("p");
@@ -33,10 +55,23 @@ var x = document.getElementsByClassName("intro");
 document.getElementById("demos").innerHTML = "The text from the intro paragraph is " + x[0].innerHTML;
 
 
+// h1 태그의 첫번째를 green 으로 하겠다 
+document.getElementsByTagName("h1")[0].style.color='green';
+
+// 아이디 찾아서 지정 
+document.getElementById("title").style.color='red';
+
+//원하는 li 에 적용해보기 
+document.getElementById('food1').getElementsByTagName('li')[0].style.background='green';
+
+
+document.getElementsByClassName('pizza')[0].innerHTML="HELLO";
+
+
+
 
 
 
 </script>
 
-</body>
 </html>
