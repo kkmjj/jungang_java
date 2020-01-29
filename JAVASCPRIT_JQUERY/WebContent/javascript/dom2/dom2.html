@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<body>
+
+<h2>Finding HTML Elements by Id</h2>
+
+<p>Hello World!</p>
+<p>This example demonstrates the <b>getElementsById</b> method.</p>
+
+
+<p class="intro">Hello class!</p>
+<p class="intro">This class demonstrates the <b>getElementsById</b> method.</p>
+
+
+<p id="demo"></p>
+
+
+<p id="demos"></p>
+
+
+
+
+<script>
+var myElement = document.getElementsByTagName("p");
+
+
+document.getElementById("demo").innerHTML = "The text from the intro paragraph is " + myElement[1].innerHTML;
+
+var x = document.getElementsByClassName("intro");
+
+
+document.getElementById("demos").innerHTML = "The text from the intro paragraph is " + x[0].innerHTML;
+
+
+
+
+
+</script>
+
+</body>
+</html>
