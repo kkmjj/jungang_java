@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> DOM 객체 </title>
+</head>
+<body>
+<h1 id="title">마우스 아웃</h1>
+<a href="#" id="btn"  alt="버튼" />
+	<img alt="" onmouseout="eout()"  onmouseover="over()" src="btn_out.gif">
+
+</a>
+<p id="img_src"></p>
+<script>
+//<![CDATA[
+
+//버튼위에 mouseout 되었을때(default상태), 추가적으로 버튼주소 추가하여 출력하기
+
+function over(){
+document.getElementsByTagName("img")[0].src="btn_over.gif";
+}
+
+function eout(){
+	document.getElementsByTagName("img")[0].src="btn_out.gif";
+}
+
+
+//]]>
+</script>
+</body>
+</html>
