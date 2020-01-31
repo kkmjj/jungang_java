@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+
+ <!-- <button id="btn">선택하면 메시지 변경</button><br><br>
+ <div id="id2">메시지</div> -->
+
+<input id="id1" value="아이디 입력">
+<input id="id2" value="아이디 입력">
+
+<button id="btn1">click</button>
+<button id="btn2">dbclick</button>
+<p>내용 </p>
+ <!--<div id="wrap"></div>
+    <iframe src="https://www.naver.com" width="300" height="200"></iframe>-->
+
+</body>
+<script type="text/javascript">
+
+// blur focus가 다른요소로 이동되었을때 이벤트 발생 강제로 포커스 사라지는 기능 
+    $(function(){
+        $('#id1').focus();
+      
+
+        $('#id1').focus(function(){
+        $(this).val("");
+        });
+
+        $('#id2').blur(function(){
+        $(this).val("");        // 즉 다른 입력창에 포커스가 가게되면 val 값이 사라짐 
+        });
+
+
+    });
+   
+
+
+
+
+
+	
+ //   $('iframe').load(function(){
+   //         $('#wrap').append("<p>로딩완료</p>");
+     //   });
+// ready라는 함수  - > html 문서 객체가 로딩이 완료된후 , 함수 동작 
+       // $(document).ready(function(){
+         //   $('#wrap').append("<p>로딩완료</p>");
+           // });
+
+    //    $(function(){  // 이렇게 해도 바로 진행 가능 
+
+    //         $('#btn1').click(function(){
+    //             $('p').css("background-color","yellow");
+    //         });
+
+    //         $('#btn2').dblclick(function(e){
+    //             e.preventDefault();
+    //             $('p').css("background-color","purple");
+
+    //         });
+
+    
+    //    });
+
+            // $(function(){
+            //     $('#btn1').mouseover(function(){
+            //         $('p').css("background-color","red");
+
+            //     });
+
+            // });
+
+
+
+
+
+
+
+   
+    //   $('#btn').click(function(){
+    //    msg2();
+    //   });
+         
+      
+    // //   $(document).ready(function(){
+
+    //     msg1();
+    //     $('#btn').click(function(){
+    //         msg1();
+    //     })
+
+    //   })
+
+    
+	
+	// function init()
+	// {
+			
+	// }
+	// function msg1()
+	// {
+	//   alert('msg1():문서로두후 자동으로 경고창 표시!')
+	// }
+	// function msg2()
+	// {
+	//   alert('msg2():문서로두후 자동으로 경고창 표시!')
+    //     //방법 1 
+   
+    //    $('#id2').html('<div style="background:silver"></div>') 
+	  
+	// }
+
+
+</script>
+
+</html>
+
