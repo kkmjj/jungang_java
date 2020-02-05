@@ -15,10 +15,8 @@ import javax.servlet.http.HttpSession;
 import javax.xml.ws.Response;
 
 
-
-
-@WebServlet("/calc2")		// 어노테이션 기법
-public class calc2 extends HttpServlet{
+@WebServlet("/calc3")		// 어노테이션 기법
+public class calc3 extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.jws.WebService;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,18 +19,41 @@ public class Math extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-	
+		ServletContext application= req.getServletContext();
 		resp.setCharacterEncoding("UTF-8");
 		
 		PrintWriter out = resp.getWriter();
 		
-		String before = req.getParameter("before");
-		String after = req.getParameter("after");
+		String v_ = req.getParameter("v");
+		String op = req.getParameter("operator");
 		
-		int I_before=Integer.parseInt(before);
-		int I_after=Integer.parseInt(after);
+		int v=0;
+		if(!v_.equals("")) v = Integer.parseInt(v_);
 		
-		out.print(I_before+I_after);
+	if(op.equals("="))
+	{
+		int reuslt=0;
+		int x=(Integer) application.getAttribute("value");
+		int y= v;
+		String operator = (String) application.getAttribute("op");
+		if(operator.equals("+"))
+		{
+			reuslt =x+y;
+		}
+		else 
+		{
+			reuslt =x-y;
+		}
+	}else
+	{
+	
+	application.setAttribute("value", v);
+	application.setAttribute("op", op);	
+	//	int I_before=Integer.parseInt(before);
+	//	int I_after=Integer.parseInt(after);
+	}
+	
+	
 		
 		
 		
